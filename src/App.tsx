@@ -32,6 +32,10 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Pokemons from './pages/pokemons_pages/Pokemons';
+import SinglePokemon from './pages/pokemons_pages/SinglePokemon';
+// import DetailsPokemon from './pages/pokemons_pages/DetailsPokemon';
+// import Detail from './pages/pokemons_pages/Detail';
 
 setupIonicReact();
 
@@ -43,10 +47,13 @@ const App: React.FC = () => (
           <Home />
         </Route>
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/pokemons" />
         </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
+        <Route exact path="/pokemons">
+          <Pokemons />
+        </Route>
+        <Route exact path="/pokemons/:id">
+          <SinglePokemon />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
