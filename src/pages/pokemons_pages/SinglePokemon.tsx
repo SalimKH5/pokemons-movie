@@ -12,7 +12,7 @@ type Cookie = {
     favoris: string[]
 }
 
-const Detail: React.FC = () => {
+const SinglePokemon: React.FC = () => {
     const { id } = useParams<{ id: string }>();
     const [pokemon, setPokemon] = useState<Pokemon>();
     const [activateButtonPre, setActivateButtonPre] = useState(false);
@@ -243,4 +243,4 @@ const Detail: React.FC = () => {
     );
 };
 
-export default Detail
+export default SinglePokemon

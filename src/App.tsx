@@ -1,5 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -40,44 +40,65 @@ import Collection from './pages/Collection';
 import Pokemons from './pages/pokemons_pages/Pokemons';
 import Favoris from './pages/pokemons_pages/Favories';
 import SinglePokemon from './pages/pokemons_pages/SinglePokemon';
-
+import { home } from 'ionicons/icons';
+import { gameController,filmOutline } from 'ionicons/icons';
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
+    
     <IonReactRouter>
+      <IonTabs>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/movies" >
-          <Movies />
-        </Route>
-        <Route exact path="/series" >
-          <Series />
-        </Route>
-        <Route exact path="/series/detail/:id/" >
-          <SerieDetail />
-        </Route>
-        <Route exact path="/collection/:id/" >
-          <Collection />
-        </Route>
-        <Route exact path="/movies/detail/:id/">
-          <MovieDetail />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/pokemons" />
-        </Route>
-        <Route exact path="/pokemons">
-          <Pokemons />
-        </Route>
-        <Route exact path="/pokemons/:id">
-          <SinglePokemon />
-        </Route>
-        <Route exact path="/pokemons/favoris">
-          <Favoris />
-        </Route>
-      </IonRouterOutlet>
+          <Route exact path="/home">
+            <Home />
+          </Route>
+          <Route exact path="/movies" >
+            <Movies />
+          </Route>
+          <Route exact path="/series" >
+            <Series />
+          </Route>
+          <Route exact path="/series/detail/:id/" >
+            <SerieDetail />
+          </Route>
+          <Route exact path="/collection/:id/" >
+            <Collection />
+          </Route>
+          <Route exact path="/movies/detail/:id/">
+            <MovieDetail />
+          </Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/pokemons">
+            <Pokemons />
+          </Route>
+          <Route exact path="/pokemons/:id">
+            <SinglePokemon />
+          </Route>
+          <Route exact path="/pokemons/favoris">
+            <Favoris />
+          </Route>
+        </IonRouterOutlet>
+
+        <IonTabBar slot="bottom">
+          <IonTabButton tab="home" href="/home">
+            <IonIcon icon={home} />
+            <IonLabel>home</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="pokemons" href="/pokemons">
+            <IonIcon icon={gameController} />
+            <IonLabel>pokemons</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="movies" href="/movies">
+            <IonIcon icon={filmOutline} />
+            <IonLabel>Film</IonLabel>
+          </IonTabButton>
+
+          
+        </IonTabBar>
+      </IonTabs>
     </IonReactRouter>
   </IonApp>
 );

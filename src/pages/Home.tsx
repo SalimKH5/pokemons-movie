@@ -2,29 +2,29 @@ import { IonAlert, IonButton, IonCard, IonCardContent, IonCol, IonContent, IonGr
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import APIROUTE from '../APIROUTE';
+import { IonIcon } from '@ionic/react';
+import { gameController,filmOutline } from 'ionicons/icons';
 
 const Home: React.FC = () => {
-  
+
   return (
     <IonPage>
-    
-      <IonContent fullscreen className='center-content'>
-        <IonGrid>
-          <IonRow>
-            <IonCol></IonCol>
-            <IonCol>
-            <IonCard className='card'>
-              <IonCardContent>
-                <p>Les cookies sont obligatoires pour accéder aux pokemons</p>
-                <IonButton id="present-alert">Acceder aux pokemons</IonButton>
 
-              </IonCardContent>
-            </IonCard>
-            </IonCol>
-            <IonCol></IonCol>
-          </IonRow>
-        </IonGrid>
-      {/* <IonAlert
+      <IonContent fullscreen className='center-content'>
+        <div style={{ width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <div style={{ width: "100%", maxWidth: "400px", display: "flex", justifyContent: "space-between" }} >
+            <button style={{display: "flex",gap:"15px",padding:"8px 10px",background:"#0080ff",color:"White", justifyContent: "center", alignItems: "center",borderRadius:"5px"}} >Pokemon <IonIcon icon={gameController} size="large"></IonIcon></button>
+            <button style={{display: "flex",gap:"15px",padding:"8px 10px",background:"#0080ff",color:"White", justifyContent: "center", alignItems: "center",borderRadius:"5px"}}>FILM <IonIcon icon={filmOutline } size="large"></IonIcon></button>
+
+          </div>
+        </div>
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default Home;
+{/* <IonAlert
         isOpen={showAlert}
         header="Cookies!"
         trigger="present-alert"
@@ -39,9 +39,3 @@ const Home: React.FC = () => {
         ]}
         // onDidDismiss={({ detail }) => console.log(`Dismissed with role: ${detail.role}`)}
       ></IonAlert> */}
-      </IonContent>
-    </IonPage>
-  );
-};
-
-export default Home;

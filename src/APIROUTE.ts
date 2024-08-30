@@ -23,5 +23,6 @@ export default {
     serie_detail,
     series,
     MEDIA_MOVIE_URL,
-    collections
+    collections,
+    pokemons
 }
