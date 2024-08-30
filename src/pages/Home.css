@@ -1,0 +1,12 @@
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+.card {
+width: 90%;
+max-width: 400px;
+}

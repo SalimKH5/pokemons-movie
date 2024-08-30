@@ -4,20 +4,27 @@ import Pokemon from '../../../Types/Pokemon';
 import APIROUTE from '../../APIROUTE';
 import { IonSelectCustomEvent } from '@ionic/core';
 import './style.css'
+import Header from '../../components/Header';
+import { getCookies } from '../../utils/capacitorCookies/cookies';
 
-const Pokemons = () => {
+const Favoris = () => {
 const [pokemons, setPokemons] = useState<Pokemon[]>([])
 const [search, setSearch] = useState('');
 const router = useIonRouter();
 
 const [filteredPokemons, setFilteredPokemons] = useState<any>(null);
 const [selectedFilter, setSelectedFilter] = useState('All');
-
-
+const [favoris, setFavoris] = useState([]);
+const [isInpokemon, setPokemon] = useState<Pokemon>();
 
 
     useIonViewWillEnter(()=>{
         try {
+
+            const getAllCookies = ()=>{
+                const cookies = getCookies();
+                console.log(cookies);                
+            };
             const getData = async () => {
                 const response = await fetch(APIROUTE.pokemons, {
                     method: "GET",
@@ -29,11 +36,11 @@ const [selectedFilter, setSelectedFilter] = useState('All');
                 
                 const dataOfResponse = await response.json();
                 setPokemons(dataOfResponse);
-                console.log(pokemons);
 
             };
         
             getData();
+            getAllCookies();
             
         } catch (error) {
             console.log(error, "problèmes de récupérations des données");
@@ -66,13 +73,13 @@ const [selectedFilter, setSelectedFilter] = useState('All');
 return(
     <>
     <IonPage>
-        <IonHeader>
-            <IonToolbar>
-                <IonTitle>Pokemons</IonTitle>
-            </IonToolbar>
-        </IonHeader>
+        <Header />
         <IonContent>
+            
             <IonGrid>
+            <IonRow className='ion-text-center'>
+                <IonTitle color='secondary'>Mes favoris pokemons</IonTitle>
+            </IonRow>
             <IonRow>
                 <IonCol></IonCol>
                 <IonCol size='12' sizeLg='6'>
@@ -204,4 +211,4 @@ return(
 
 }
 
-export default Pokemons
+export default Favoris

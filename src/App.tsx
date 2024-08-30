@@ -34,6 +34,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import Pokemons from './pages/pokemons_pages/Pokemons';
 import SinglePokemon from './pages/pokemons_pages/SinglePokemon';
+import Favoris from './pages/pokemons_pages/Favories';
 // import DetailsPokemon from './pages/pokemons_pages/DetailsPokemon';
 // import Detail from './pages/pokemons_pages/Detail';
 
@@ -54,6 +55,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/pokemons/:id">
           <SinglePokemon />
+        </Route>
+        <Route exact path="/pokemons/favoris">
+          <Favoris />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
