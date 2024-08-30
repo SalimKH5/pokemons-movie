@@ -42,7 +42,7 @@ const SerieDetail = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonItem routerLink={`/series/`}>
-                        <IonTitle slot='start'>GOT Quotes</IonTitle>
+                        <IonTitle slot='start'>Serie Details</IonTitle>
                     </IonItem>
                     <IonItem slot='end'>
                         <IonBackButton />

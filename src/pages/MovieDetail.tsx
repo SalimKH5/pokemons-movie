@@ -51,7 +51,7 @@ const MovieDetail = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonItem routerLink={`/movies`}>
-                        <IonTitle slot='start'>GOT Quotes</IonTitle>
+                        <IonTitle slot='start'>Serie Details</IonTitle>
                     </IonItem>
                     <IonItem slot='end'>
                         <IonBackButton />
