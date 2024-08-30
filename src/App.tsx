@@ -41,7 +41,7 @@ import Pokemons from './pages/pokemons_pages/Pokemons';
 import Favoris from './pages/pokemons_pages/Favories';
 import SinglePokemon from './pages/pokemons_pages/SinglePokemon';
 import { home } from 'ionicons/icons';
-import { gameController,filmOutline } from 'ionicons/icons';
+import { gameController,filmOutline,tvOutline } from 'ionicons/icons';
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -94,6 +94,10 @@ const App: React.FC = () => (
           <IonTabButton tab="movies" href="/movies">
             <IonIcon icon={filmOutline} />
             <IonLabel>Film</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="series" href="/series">
+            <IonIcon icon={tvOutline} />
+            <IonLabel>series</IonLabel>
           </IonTabButton>
 
           
