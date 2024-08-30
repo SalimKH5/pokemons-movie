@@ -1,4 +1,4 @@
-import { IonAvatar, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonSpinner, IonTitle, IonToolbar, SelectChangeEventDetail, useIonRouter, useIonViewWillEnter } from '@ionic/react';
+import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonItem, IonLabel, IonList, IonPage, IonRow, IonSelect, IonSelectOption, IonSkeletonText, IonSpinner, IonTitle, IonToolbar, SelectChangeEventDetail, useIonRouter, useIonViewWillEnter } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import APIROUTE from '../../APIROUTE';
 import { IonSelectCustomEvent } from '@ionic/core';
@@ -10,7 +10,7 @@ const Pokemons = () => {
     const [pokemons, setPokemons] = useState<Pokemon[]>([])
     const [search, setSearch] = useState('');
     const router = useIonRouter();
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState(true);
     const [filteredPokemons, setFilteredPokemons] = useState<any>(null);
     const [selectedFilter, setSelectedFilter] = useState('All');
 
@@ -31,20 +31,20 @@ const Pokemons = () => {
                 });
 
                 const dataOfResponse = await response.json();
-                setPokemons(dataOfResponse);
-                console.log(pokemons);
-
+                
+                setTimeout(() => {
+                    setPokemons(dataOfResponse);
+                    setLoading(false);
+                }, 2000);
             };
-            setTimeout(() => {
-                getData();
-            }, 100);
+
+            getData();
+            
            
 
         } catch (error) {
             console.log(error, "problèmes de récupérations des données");
 
-        } finally {
-            setLoading(false);
         }
     });
     // Combiner recherche et filtre
@@ -175,21 +175,65 @@ const Pokemons = () => {
 
                     <IonCard>
                         <IonCardContent style={{ cursor: 'pointer' }}>
-                            {loading ?
-                                <div style={{ width: "100%",height:"100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                    <IonSpinner></IonSpinner>
-                                </div>
-                                :
+                            
                                 <IonRow>
-                                    {filteredPokemons && filteredPokemons.length > 0 ? (
+                                    {!loading && filteredPokemons && filteredPokemons.length > 0 ? (
                                         filteredPokemons.map((pokemon: Pokemon, index: number) => (
                                             <Pokemon {...pokemon} />
                                         ))
-                                    ) : (
-                                        <p>No Pokémon found.</p>
+                                    ) : ( 
+                                        <>
+                                        <IonToolbar>
+                                            <IonButtons slot="start">
+                                            <IonSkeletonText animated style={{ width : '10%' }} />
+                                            </IonButtons>
+                                            <IonTitle className="ion-text-center" color='secondary'>
+                                                <IonSkeletonText animated style={{ width : '40%' }} />
+
+                                            </IonTitle>
+                                            <IonButtons slot="end">
+                                            <IonSkeletonText animated style={{ width : '10%' }} />
+                                            
+                                            </IonButtons>
+                                        </IonToolbar>
+                                        <IonSkeletonText animated style={{ width: '100%', height: '200px' }} />
+                                        
+                                        <IonCardHeader>
+                                            <IonCardTitle>
+                                                <IonSkeletonText animated style={{ width : '40%' }} />
+                                            </IonCardTitle>
+                                            <IonCardSubtitle color='secondary'>
+                                                <IonSkeletonText animated style={{ width : '30%' }} />
+
+                                            </IonCardSubtitle>
+                                        </IonCardHeader>
+                                        <IonCardContent> 
+                                            <IonList>
+                                                <IonItem>
+                                                    <IonSkeletonText animated style={{ width : '40%' }} />
+
+                                                </IonItem>
+                                                <IonItem>
+                                                    <IonSkeletonText animated style={{ width : '40%' }} />
+
+                                                </IonItem>
+                                                <IonItem>
+                                                    <IonSkeletonText animated style={{ width : '40%' }} />
+
+                                                </IonItem>
+                                                <IonItem>
+                                                    <IonSkeletonText animated style={{ width : '40%' }} />
+
+                                                </IonItem>
+                                    
+                                            </IonList>
+
+                                        </IonCardContent>
+                                    
+                                    </>
                                     )}
                                 </IonRow>
-                            }
+                            
 
 
 
