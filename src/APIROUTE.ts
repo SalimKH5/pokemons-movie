@@ -6,6 +6,9 @@ const collections=import.meta.env.VITE_COLECTION_URL
 
 
 
+
+const pokemons=BASE_POKEMON_URL+"api/v1/pokemon"
+
 const movie_detail=BASE_MOVIE_URL+"/infos/movies/"
 
 const series=BASE_MOVIE_URL+"/search/series/"

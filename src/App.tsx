@@ -37,6 +37,9 @@ import MovieDetail from './pages/MovieDetail';
 import Series from './pages/Series';
 import SerieDetail from './pages/SerieDetail';
 import Collection from './pages/Collection';
+import Pokemons from './pages/pokemons_pages/Pokemons';
+import Favoris from './pages/pokemons_pages/Favories';
+import SinglePokemon from './pages/pokemons_pages/SinglePokemon';
 
 setupIonicReact();
 
@@ -63,7 +66,16 @@ const App: React.FC = () => (
           <MovieDetail />
         </Route>
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/pokemons" />
+        </Route>
+        <Route exact path="/pokemons">
+          <Pokemons />
+        </Route>
+        <Route exact path="/pokemons/:id">
+          <SinglePokemon />
+        </Route>
+        <Route exact path="/pokemons/favoris">
+          <Favoris />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
